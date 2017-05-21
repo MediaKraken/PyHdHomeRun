@@ -520,12 +520,12 @@ class HdhrVideo(object):
                         frame_received.rates.popleft()
 
                     types = []
-                    for ptype, count in frame_received.types.iteritems():
+                    for ptype, count in frame_received.types.items():
                         types.append('%d=%d' % (ptype, count))
                     
-                    print("Frames/s: %d  Bytes/s: %d [%s]" % 
+                    print(("Frames/s: %d  Bytes/s: %d [%s]" % 
                           (frame_received.frame_count, 
-                           frame_received.bytes_per_second, ' '.join(types)))
+                           frame_received.bytes_per_second, ' '.join(types))))
                     
                     frame_received.frame_count = 0
                     frame_received.bytes_per_second = 0
@@ -536,7 +536,7 @@ class HdhrVideo(object):
                 frame_received.frame_count += 1
                 frame_received.bytes_per_second += length
 
-                buffer = ''.join([chr(cbuffer[i]) for i in xrange(length)])
+                buffer = ''.join([chr(cbuffer[i]) for i in range(length)])
                 f.write(buffer)
 
 #                process_mpegts_packet(buffer)
